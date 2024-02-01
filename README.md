@@ -3,3 +3,15 @@
 `php -S 127.0.0.1:8000 -t public`
 
 1. Установка проекта: `composer create-project --prefer-dist laravel/laravel laravel_telegram_bot`
+
+2. Установка пакета "defstudio/telegraph":
+`composer require defstudio/telegraph`
+
+- генерация 2 миграций, для последующего наката:
+`php artisan vendor:publish --tag="telegraph-migrations"`
+
+- генерация файла конфигурации для бота
+`php artisan vendor:publish --tag="telegraph-config"`
+
+- в telegraph.php установил формат разметки сообщений 
+`'default_parse_mode' => Telegraph::PARSE_MARKDOWN`

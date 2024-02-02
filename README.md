@@ -15,3 +15,21 @@
 
 - в telegraph.php установил формат разметки сообщений 
 `'default_parse_mode' => Telegraph::PARSE_MARKDOWN`
+
+3. Добавляем бота в базу в таблицу:
+`php artisan telegraph:new-bot`
+- вводим токен, полученный при регистрации бота, вводим name.
+
+- создан класс TelegramService для обработки веб-хуков
+- telegraph.php указали какой класс будет обрабатывать веб-хуки
+
+- в .env нужно указать url, на котором хостится приложение
+- telegram на этот адрес будет отправлять веб-хуки:
+APP_URL=https://e6be-176-196-196-50.ngrok-free.app/
+- командой, сообщаем что готовы принимать веб-хуки:
+`php artisan telegraph:set-webhook {bot_id}`
+`php artisan telegraph:set-webhook 1`
+
+- установил флаги в telegraph.php
+
+- написан тестовый обработчик hello() в TelegramService

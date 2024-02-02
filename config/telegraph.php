@@ -23,7 +23,8 @@ return [
      *
      * For reference, see https://defstudio.github.io/telegraph/webhooks/overview
      */
-    'webhook_handler' => DefStudio\Telegraph\Handlers\EmptyWebhookHandler::class,
+    // 'webhook_handler' => DefStudio\Telegraph\Handlers\EmptyWebhookHandler::class,
+    'webhook_handler' => \App\Services\TelegramService::class,
 
     /*
      * Sets the webhook URL that will be exposed by the server,
@@ -54,13 +55,16 @@ return [
     'security' => [
         /*
          * if enabled, allows callback queries from unregistered chats
+         * 
+         * Если включено, разрешают обратные вызовы от незарегистрированных чатов
          */
-        'allow_callback_queries_from_unknown_chats' => false,
+        'allow_callback_queries_from_unknown_chats' => true,
 
         /*
          * if enabled, allows messages and commands from unregistered chats
+         * Если включено, разрешают команды и сообщения от незарегистрированных чатов
          */
-        'allow_messages_from_unknown_chats' => false,
+        'allow_messages_from_unknown_chats' => true,
 
         /*
          * if enabled, store unknown chats as new TelegraphChat models

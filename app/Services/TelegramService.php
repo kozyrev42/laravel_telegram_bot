@@ -14,13 +14,13 @@ class TelegramService extends WebhookHandler
 {
     public function hello()
     {
-        $this->reply('Привет друг!');
+        $this->reply('Привет пидрила!');
     }
 
     // обработка неизвестной команды:
     protected function handleUnknownCommand(SupportStringable $text): void
     {
-        $this->reply('Привет!');
+        $this->reply('Привет, пидрила! Жми "Меню"!');
     }
 
     // обработка отправляемы сообщений боту:
@@ -31,7 +31,7 @@ class TelegramService extends WebhookHandler
 
     public function cryptocurrency()
     {
-        Telegraph::message('Узнать курс крипты:',)
+        $this->chat->message('Узнать курс крипты:')
             ->keyboard(Keyboard::make()->buttons([
                 Button::make('Bitcoin')->action('getBitcoin'),
                 Button::make('Ethereum')->action('getEthereum')
@@ -49,9 +49,9 @@ class TelegramService extends WebhookHandler
             $data = $response->json();
             $price = $data['bitcoin']['rub'];
 
-            Telegraph::message('Стоимость одного Биткойна: '.$price.' рублей.')->send();
+            $this->chat->message('Стоимость одного Биткойна: '.$price.' рублей.')->send();
         } else {
-            Telegraph::message('Не удалось получить данные.')->send();
+            $this->chat->message('Не удалось получить данные.')->send();
         }
     }
 
@@ -66,9 +66,9 @@ class TelegramService extends WebhookHandler
             $data = $response->json();
             $price = $data['ethereum']['rub']; 
 
-            Telegraph::message('Стоимость одного Эфира: '.$price.' рублей.')->send();
+            $this->chat->message('Стоимость одного Эфира: '.$price.' рублей.')->send();
         } else {
-            Telegraph::message('Не удалось получить данные.')->send();
+            $this->chat->message('Не удалось получить данные.')->send();
         }
     }
 }

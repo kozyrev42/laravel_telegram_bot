@@ -38,7 +38,8 @@ class RegCommandBot extends Command
         // регистрируем команду
         // метод send(), отправит запрос в телеграм
         $bot->registerCommands([
-            'hello' => 'Сказажи привет боту'
+            'hello' => 'Сказажи привет боту',
+            'cryptocurrency' => 'Узнать курсы криптовалют'
         ])->send();
     }
 }

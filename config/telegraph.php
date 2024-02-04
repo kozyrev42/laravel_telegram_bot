@@ -44,7 +44,7 @@ return [
      * If enabled, Telegraph dumps received
      * webhook messages to logs
      */
-    'debug_mode' => false,
+    'debug_mode' => true,
 
     /*
      * If enabled, unknown webhook commands are
@@ -68,8 +68,9 @@ return [
 
         /*
          * if enabled, store unknown chats as new TelegraphChat models
+         * Если включено, храните неизвестные чаты как новые модели Telegraphchat
          */
-        'store_unknown_chats_in_db' => false,
+        'store_unknown_chats_in_db' => true,
     ],
 
     /*
